@@ -1,9 +1,8 @@
 namespace Vision.GUI
 {
-    using Emgu.CV;
-    using Emgu.CV.Face;
-    using Emgu.CV.Structure;
     using System.ComponentModel;
+    using System.Diagnostics;
+    using Vision.Services.ComputationServices;
     using Vision.Services.VideoService;
 
     public partial class Form1 : Form
@@ -34,6 +33,7 @@ namespace Vision.GUI
                 _imageProcessor.ShowDetectedFaces(feed);
                 var faceImage = _imageProcessor.GetFaceROI(feed);
 
+                Debug.WriteLine(ProximityEstimater.GetEstimatedDistance());
                 if (_shouldDisplayFeed)
                 {
                     pictureBox1.BackgroundImage = _imageProcessor.ConvertBgrImageToBitMap(feed);

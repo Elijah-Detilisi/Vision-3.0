@@ -6,6 +6,7 @@ namespace Vision.Services.VideoService
     using Emgu.CV.Structure;
     using System.Diagnostics;
     using System.Drawing;
+    using Vision.Services.ComputationServices;
 
     public class ImageProcessor
     {
@@ -32,6 +33,7 @@ namespace Vision.Services.VideoService
                 Image<Gray, Byte> resultImage = imageFrame.Convert<Gray, Byte>();
                 foreach (var face in _detectedFaces)
                 {
+                    ProximityEstimater.SetEstimatedDistance(face.Width);
                     resultImage.ROI = face;
                 }
                 return resultImage;

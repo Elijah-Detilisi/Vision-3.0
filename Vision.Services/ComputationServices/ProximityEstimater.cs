@@ -1,42 +1,34 @@
 ﻿
 namespace Vision.Services.ComputationServices
 {
-    public class ProximityEstimater
+    public static class ProximityEstimater
     {
         #region Instances
-        private readonly double _controlDistance; 
-        private readonly double _controlFaceWidth;
-        private double _detectedFaceHeight;
-        #endregion
-
-        public ProximityEstimater()
-        {
-            _controlDistance = 30; //in centimeters
-            _controlFaceWidth = 14.3;
-            _detectedFaceHeight = 0.0;
-        }
-
-        #region Setters and Getters
-        public double DetectedFaceWidth
-        {
-            set { _detectedFaceHeight = value; }
-            get { return _detectedFaceHeight; }
-            
-        }
+        private static double _estimatedDistance = 0.0;
+        private static readonly double _controlDistance = 30.0; 
+        private static readonly double _controlFaceWidth = 41.3;
         #endregion
 
         #region Computations
-        private double GetFocalLength(double detectedFaceWidth)
+        private static double GetFocalLength(double detectedFaceWidth)
         {
             var focalLength = (_controlFaceWidth * _controlDistance) / detectedFaceWidth;
             return focalLength;
         }
 
-        public double GetDistance(double detectedFaceWidth)
+        public static void SetEstimatedDistance(double detectedFaceWidth)
         {
-            var distance = (_controlFaceWidth * GetFocalLength(detectedFaceWidth)) / detectedFaceWidth;
-            return _controlDistance;
+            _estimatedDistance = (_controlFaceWidth * GetFocalLength(detectedFaceWidth))/10;
         }
         #endregion
+
+        public static double GetEstimatedDistance()
+        {
+            var distanceValue = _estimatedDistance;
+            _estimatedDistance = 0;
+
+            return distanceValue;
+            
+        }
     }
 }
