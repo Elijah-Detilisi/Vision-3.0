@@ -40,6 +40,10 @@ namespace Vision.GUI
             }
         }
         
+        private void MonitorThreshold()
+        {
+
+        }
         public void DisplayDefualtBg()
         {
             /*pictureBox1.BackgroundImage = Properties.Resources.face_recognition;
