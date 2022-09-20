@@ -11,38 +11,27 @@ namespace Vision.Services.VideoService
     public class ImageProcessor
     {
         #region Instances
-        private Rectangle[] _detectedFaces;
-        private readonly CascadeClassifier _faceCascade;
         private Bgr _borderColor;
+        private Rectangle[] _detectedFaces;
+        private Rectangle[] _detectedBodies;
+        private readonly CascadeClassifier _faceCascade;
+        private readonly CascadeClassifier _upperBodyCascade;
+        
         #endregion
 
         public ImageProcessor()
         {
             _detectedFaces = new Rectangle[3];
+            _detectedBodies = new Rectangle[3];
             _borderColor = new Bgr(Color.SteelBlue);
-            _faceCascade = new CascadeClassifier(
-                Directory.GetCurrentDirectory() + @"\haarcascade_frontalface_default.xml"
-            );
+
+            var cascadePath = Directory.GetCurrentDirectory() + @"\Haarcascades\";
+            _upperBodyCascade = new CascadeClassifier(cascadePath + "haarcascade_upperbody.xml");
+            _faceCascade = new CascadeClassifier(cascadePath + "haarcascade_frontalface_default.xml");
+            
         }
 
         #region Setter and Getter Methods
-        public Image<Gray, byte>? GetFaceROI(Image<Bgr, Byte> imageFrame)
-        {
-            if (_detectedFaces != null && _detectedFaces.Length > 0)
-            {
-                Image<Gray, Byte> resultImage = imageFrame.Convert<Gray, Byte>();
-                foreach (var face in _detectedFaces)
-                {
-                    ProximityEstimater.SetEstimatedDistance(face.Width);
-                    resultImage.ROI = face;
-                }
-                return resultImage;
-            }
-            else
-            {
-                return null;
-            }
-        }
         public void ChangeBorderColor(int state)
         {
             if (state == 1)
@@ -78,13 +67,22 @@ namespace Vision.Services.VideoService
         }
         #endregion
 
-        #region Face Detection Methods
-        private void DetectFacesFromImage(Image<Bgr, Byte> imageFrame)
+        #region Face and Body Detection Methods
+        private void DetectFacesAndBodiesFromImage(Image<Bgr, Byte> imageFrame)
         {
             try
             {
                 Mat grayImage = ConvertBgr2Gray(imageFrame);
+                //Detect faces
                 _detectedFaces = _faceCascade.DetectMultiScale(
+                    image: grayImage,
+                    scaleFactor: 1.1,
+                    minNeighbors: 3,
+                    minSize: Size.Empty,
+                    maxSize: Size.Empty
+                );
+                //Detect bodies
+                _detectedBodies = _upperBodyCascade.DetectMultiScale(
                     image: grayImage,
                     scaleFactor: 1.1,
                     minNeighbors: 3,
@@ -94,21 +92,40 @@ namespace Vision.Services.VideoService
             }
             catch (Exception ex)
             {
-                Debug.WriteLine("[INFO]: Error in ImageProssesor.DetectFacesFromImage(): " + ex.Message);
+                Debug.WriteLine("[INFO]: Error in ImageProssesor.DetectFacesAndBodiesFromImage(): " + ex.Message);
             }
         }
 
-        public void ShowDetectedFaces(Image<Bgr, Byte> imageFrame)
+        public void ShowDetectedHeadAndShoulders(Image<Bgr, Byte> imageFrame)
         {
-            DetectFacesFromImage(imageFrame);
+            DetectFacesAndBodiesFromImage(imageFrame);
 
+            //show detected faces
             if (_detectedFaces != null && _detectedFaces.Length > 0)
             {
-                foreach (var face in _detectedFaces)
+                foreach (var face in _detectedFaces.Concat(_detectedBodies))
                 {
+                    ProximityEstimater.SetEstimatedDistance(face.Width);
+
                     CvInvoke.Rectangle(
                         img: imageFrame,
                         rect: face,
+                        color: _borderColor.MCvScalar,
+                        thickness: 3
+                    );
+                }
+            }
+
+            //show detected bodies
+            if (_detectedBodies != null && _detectedBodies.Length > 0)
+            {
+                foreach (var body in _detectedBodies)
+                {
+                    ProximityEstimater.SetEstimatedDistance(body.Width);
+
+                    CvInvoke.Rectangle(
+                        img: imageFrame,
+                        rect: body,
                         color: _borderColor.MCvScalar,
                         thickness: 3
                     );

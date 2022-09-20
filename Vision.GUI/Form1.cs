@@ -30,8 +30,7 @@ namespace Vision.GUI
             var feed = _videoFeed.GetCurrentImageFrame();
             if (feed != null)
             {
-                _imageProcessor.ShowDetectedFaces(feed);
-                var faceImage = _imageProcessor.GetFaceROI(feed);
+                _imageProcessor.ShowDetectedHeadAndShoulders(feed);
 
                 Debug.WriteLine(ProximityEstimater.GetEstimatedDistance());
                 if (_shouldDisplayFeed)
