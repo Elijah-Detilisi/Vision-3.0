@@ -22,7 +22,7 @@ namespace Vision.Services.ComputationServices
         }
         #endregion
 
-        public static double GetEstimatedDistance()
+        public static double GetEstimatedFaceDistance()
         {
             var distanceValue = _estimatedDistance;
             _estimatedDistance = 0;

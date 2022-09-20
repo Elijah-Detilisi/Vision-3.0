@@ -32,7 +32,7 @@ namespace Vision.GUI
             {
                 _imageProcessor.ShowDetectedHeadAndShoulders(feed);
 
-                Debug.WriteLine(ProximityEstimater.GetEstimatedDistance());
+                Debug.WriteLine(ProximityEstimater.GetEstimatedFaceDistance());
                 if (_shouldDisplayFeed)
                 {
                     pictureBox1.BackgroundImage = _imageProcessor.ConvertBgrImageToBitMap(feed);

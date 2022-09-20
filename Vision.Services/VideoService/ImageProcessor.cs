@@ -14,9 +14,9 @@ namespace Vision.Services.VideoService
         private Bgr _borderColor;
         private Rectangle[] _detectedFaces;
         private Rectangle[] _detectedBodies;
+        private readonly string _cascadePath;
         private readonly CascadeClassifier _faceCascade;
         private readonly CascadeClassifier _upperBodyCascade;
-        
         #endregion
 
         public ImageProcessor()
@@ -24,10 +24,9 @@ namespace Vision.Services.VideoService
             _detectedFaces = new Rectangle[3];
             _detectedBodies = new Rectangle[3];
             _borderColor = new Bgr(Color.SteelBlue);
-
-            var cascadePath = Directory.GetCurrentDirectory() + @"\Haarcascades\";
-            _upperBodyCascade = new CascadeClassifier(cascadePath + "haarcascade_upperbody.xml");
-            _faceCascade = new CascadeClassifier(cascadePath + "haarcascade_frontalface_default.xml");
+            _cascadePath = Directory.GetCurrentDirectory() + @"\Haarcascades\";
+            _upperBodyCascade = new CascadeClassifier(_cascadePath + "haarcascade_upperbody.xml");
+            _faceCascade = new CascadeClassifier(_cascadePath + "haarcascade_frontalface_default.xml");
             
         }
 
@@ -121,7 +120,7 @@ namespace Vision.Services.VideoService
             {
                 foreach (var body in _detectedBodies)
                 {
-                    ProximityEstimater.SetEstimatedDistance(body.Width);
+                    //ProximityEstimater.SetEstimatedDistance(body.Width);
 
                     CvInvoke.Rectangle(
                         img: imageFrame,
