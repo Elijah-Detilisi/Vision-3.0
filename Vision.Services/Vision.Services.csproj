@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="VideoService\Haarcascades\haarcascade_frontalface_default.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="VideoService\Haarcascades\haarcascade_frontalface_default.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Emgu.CV" Version="4.5.5.4823" />
     <PackageReference Include="Emgu.CV.Bitmap" Version="4.5.5.4823" />
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.5.5.4823" />
