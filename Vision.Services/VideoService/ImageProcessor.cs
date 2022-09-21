@@ -24,7 +24,7 @@ namespace Vision.Services.VideoService
             _detectedFaces = new Rectangle[3];
             _detectedBodies = new Rectangle[3];
             _borderColor = new Bgr(Color.SteelBlue);
-            _cascadePath = Directory.GetCurrentDirectory() + @"\Haarcascades\";
+            _cascadePath = Directory.GetCurrentDirectory() + @"\VideoService\Haarcascades\";
             _upperBodyCascade = new CascadeClassifier(_cascadePath + "haarcascade_upperbody.xml");
             _faceCascade = new CascadeClassifier(_cascadePath + "haarcascade_frontalface_default.xml");
             
@@ -97,14 +97,17 @@ namespace Vision.Services.VideoService
 
         public void ShowDetectedHeadAndShoulders(Image<Bgr, Byte> imageFrame)
         {
-            DetectFacesAndBodiesFromImage(imageFrame);
+            double faceWidth = 0.0;
+            double bodyWidth = 0.0;
 
+            DetectFacesAndBodiesFromImage(imageFrame);
+            
             //show detected faces
             if (_detectedFaces != null && _detectedFaces.Length > 0)
             {
                 foreach (var face in _detectedFaces.Concat(_detectedBodies))
                 {
-                    ProximityEstimater.SetEstimatedDistance(face.Width);
+                    faceWidth = face.Width;
 
                     CvInvoke.Rectangle(
                         img: imageFrame,
@@ -120,7 +123,7 @@ namespace Vision.Services.VideoService
             {
                 foreach (var body in _detectedBodies)
                 {
-                    //ProximityEstimater.SetEstimatedDistance(body.Width);
+                    bodyWidth = body.Width;
 
                     CvInvoke.Rectangle(
                         img: imageFrame,
@@ -130,6 +133,8 @@ namespace Vision.Services.VideoService
                     );
                 }
             }
+
+            ProximityEstimater.SetDetectedFaceAndBodyWidth(faceWidth, bodyWidth);
         }
         #endregion
 

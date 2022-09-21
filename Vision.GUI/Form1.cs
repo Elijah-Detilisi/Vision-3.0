@@ -1,22 +1,26 @@
 namespace Vision.GUI
 {
-    using System.ComponentModel;
     using System.Diagnostics;
-    using Vision.Services.ComputationServices;
+    using System.ComponentModel;
     using Vision.Services.VideoService;
-
+    using Vision.Services.AudioService;
+    using Vision.Services.ComputationServices;
+    
     public partial class Form1 : Form
     {
         #region Instances
         private VideoFeed _videoFeed;
         private Boolean _shouldDisplayFeed;
+        private TextToSpeech _textToSpeech;
         private ImageProcessor _imageProcessor;
+        
         #endregion
 
         public Form1()
         {
             _videoFeed = new VideoFeed();
             _shouldDisplayFeed = true;
+            _textToSpeech = new TextToSpeech();
             _imageProcessor = new ImageProcessor();
 
             InitializeComponent();
@@ -32,7 +36,8 @@ namespace Vision.GUI
             {
                 _imageProcessor.ShowDetectedHeadAndShoulders(feed);
 
-                Debug.WriteLine(ProximityEstimater.GetEstimatedFaceDistance());
+                MonitorThreshold();
+
                 if (_shouldDisplayFeed)
                 {
                     pictureBox1.BackgroundImage = _imageProcessor.ConvertBgrImageToBitMap(feed);
@@ -42,6 +47,14 @@ namespace Vision.GUI
         
         private void MonitorThreshold()
         {
+            var distance = ProximityEstimater.GetEstimatedProximityDistance();
+            if (distance>0 && distance <90)
+            {
+                Console.Beep();
+                //_textToSpeech.Speak(Vocabulary.GetPromptMessage("Security: Alert"));
+            }
+
+            Debug.WriteLine(distance);
 
         }
         public void DisplayDefualtBg()

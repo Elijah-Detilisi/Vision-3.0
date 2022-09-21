@@ -1,7 +1,7 @@
-﻿
-#pragma warning disable CA1416 // Validate platform compatibility
+﻿#pragma warning disable CA1416 // Validate platform compatibility
 
-namespace Vision.Services.ComputationServices
+
+namespace Vision.Services.AudioService
 {
     using System.Speech.Synthesis;
 

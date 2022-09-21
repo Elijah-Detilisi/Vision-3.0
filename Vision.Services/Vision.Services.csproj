@@ -8,10 +8,14 @@
 
   <ItemGroup>
     <None Remove="VideoService\Haarcascades\haarcascade_frontalface_default.xml" />
+    <None Remove="VideoService\Haarcascades\haarcascade_upperbody.xml" />
   </ItemGroup>
 
   <ItemGroup>
     <Content Include="VideoService\Haarcascades\haarcascade_frontalface_default.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="VideoService\Haarcascades\haarcascade_upperbody.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
@@ -21,10 +25,6 @@
     <PackageReference Include="Emgu.CV.Bitmap" Version="4.5.5.4823" />
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.5.5.4823" />
     <PackageReference Include="System.Speech" Version="6.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="AudioService\" />
   </ItemGroup>
 
 </Project>

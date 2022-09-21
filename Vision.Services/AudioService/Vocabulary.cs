@@ -1,5 +1,4 @@
-﻿
-namespace Vision.Services.ComputationServices
+﻿namespace Vision.Services.AudioService
 {
     public static class Vocabulary
     {
