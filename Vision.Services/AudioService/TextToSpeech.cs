@@ -3,6 +3,7 @@
 
 namespace Vision.Services.AudioService
 {
+    using System.Diagnostics;
     using System.Speech.Synthesis;
 
     public class TextToSpeech
@@ -35,7 +36,10 @@ namespace Vision.Services.AudioService
         }
         public async Task SpeakAsync(string text)
         {
-            _speechSynthesizer.SpeakAsync(text);
+            if (_speechSynthesizer.State.ToString() == "Ready")
+            {
+                _speechSynthesizer.SpeakAsync(text);
+            }
         }
         #endregion
 

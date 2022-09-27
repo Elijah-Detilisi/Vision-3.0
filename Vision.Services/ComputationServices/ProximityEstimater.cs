@@ -41,19 +41,17 @@ namespace Vision.Services.ComputationServices
 
         private static void CalculateEstimatedDistance()
         {
-            _estimatedDistance = (_controlFaceWidth * GetFocalLength(_detectedFaceWidth)) / 10;
-
-            /*if (_detectedFaceWidth > 0)
+            if (_detectedFaceWidth > 0)
             {
                 _estimatedDistance = (_controlFaceWidth * GetFocalLength(_detectedFaceWidth)) / 10;
             }
             else
             {
-                if (_detectedBodyWidth>0)
+                if (_detectedBodyWidth > 0)
                 {
                     _estimatedDistance = (_controlFaceWidth * GetFocalLength(_detectedBodyWidth)) / 2.5;
                 }
-            }*/
+            }
         }
         #endregion
 

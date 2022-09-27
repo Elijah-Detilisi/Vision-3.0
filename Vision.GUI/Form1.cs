@@ -48,14 +48,12 @@ namespace Vision.GUI
         private void MonitorThreshold()
         {
             var distance = ProximityEstimater.GetEstimatedProximityDistance();
+            
             if (distance>0 && distance <90)
             {
                 Console.Beep();
-                //_textToSpeech.Speak(Vocabulary.GetPromptMessage("Security: Alert"));
+                _textToSpeech.SpeakAsync(Vocabulary.GetPromptMessage("Security: Alert"));
             }
-
-            Debug.WriteLine(distance);
-
         }
         public void DisplayDefualtBg()
         {
