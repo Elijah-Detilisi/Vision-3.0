@@ -3,7 +3,6 @@
 
 namespace Vision.Services.AudioService
 {
-    using System.Diagnostics;
     using System.Speech.Synthesis;
 
     public class TextToSpeech

@@ -42,32 +42,32 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(470, 80);
+            this.panel1.Size = new System.Drawing.Size(449, 130);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 329);
+            this.panel2.Location = new System.Drawing.Point(0, 367);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(470, 82);
+            this.panel2.Size = new System.Drawing.Size(449, 103);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Controls.Add(this.pictureBox1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 80);
+            this.panel3.Location = new System.Drawing.Point(0, 130);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(470, 249);
+            this.panel3.Size = new System.Drawing.Size(449, 237);
             this.panel3.TabIndex = 2;
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBox1.Location = new System.Drawing.Point(0, 0);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(364, 249);
+            this.pictureBox1.Size = new System.Drawing.Size(449, 237);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -80,7 +80,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(470, 411);
+            this.ClientSize = new System.Drawing.Size(449, 470);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
