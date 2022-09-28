@@ -100,5 +100,10 @@ namespace Vision.GUI
             _videoFeed.OpenCamera();
         }
         #endregion
+
+        private void closebtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
