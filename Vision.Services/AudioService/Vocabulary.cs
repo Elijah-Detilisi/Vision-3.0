@@ -6,20 +6,24 @@
         private readonly static Dictionary<string, string> _promptMessages = new Dictionary<string, string>(){
             {
                 "Security: Alert",
-                    "Intruder alert please step away from the computer!"
+                    "Intruder please step away from the computer!"
             },
             {
                 "Security: Launch",
                     "Vision security system engaged!"
+            },
+            {
+                "Security: Terminate",
+                    "Surveillance down, Vision security system terminated!"
             }
         };
 
         private readonly static Dictionary<string, string[]> _commands = new Dictionary<string, string[]>()
         {
             {
-                "Security: Engage",
+                "Security: StandDown",
                     new string[]{
-                        "Engage vision", "Launch vision"
+                        "Vision Terminate Security System Now"
                     }
             }
         };
