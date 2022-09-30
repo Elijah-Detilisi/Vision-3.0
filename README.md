@@ -15,3 +15,7 @@ To start using VISION;
 - After clicking on the "Start button", you will see the Surveillance window below; with visuals to warn people not touch your computer. 
  
 ![alt text](https://github.com/Elijah-Detilisi/Vision-3.0/blob/master/Vision.GUI/Resources/Screenshots/2.PNG?raw=true)
+
+- However, if a person persists to intrude despite the warning, the software will immediately sound a loud alarm, and show a distress icon on the top left of the window as shown below.
+ 
+![alt text](https://github.com/Elijah-Detilisi/Vision-3.0/blob/master/Vision.GUI/Resources/Screenshots/3.PNG?raw=true)
