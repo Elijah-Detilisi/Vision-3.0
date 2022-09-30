@@ -35,6 +35,7 @@
             this.AlarmPicturebox = new System.Windows.Forms.PictureBox();
             this.CloseButton = new System.Windows.Forms.Button();
             this.SurveillanceWorker = new System.ComponentModel.BackgroundWorker();
+            this.Warninglabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.IconPicturebox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AlarmPicturebox)).BeginInit();
             this.SuspendLayout();
@@ -68,7 +69,7 @@
             this.StartButton.FlatAppearance.BorderSize = 0;
             this.StartButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.StartButton.ForeColor = System.Drawing.SystemColors.Control;
-            this.StartButton.Location = new System.Drawing.Point(116, 229);
+            this.StartButton.Location = new System.Drawing.Point(112, 213);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(102, 73);
             this.StartButton.TabIndex = 4;
@@ -105,11 +106,24 @@
             this.SurveillanceWorker.DoWork += new System.ComponentModel.DoWorkEventHandler(this.SurveillanceWorker_DoWork);
             this.SurveillanceWorker.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.SurveillanceWorker_RunWorkerCompleted);
             // 
+            // Warninglabel
+            // 
+            this.Warninglabel.AutoSize = true;
+            this.Warninglabel.Font = new System.Drawing.Font("Tempus Sans ITC", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.Warninglabel.ForeColor = System.Drawing.Color.Brown;
+            this.Warninglabel.Location = new System.Drawing.Point(86, 300);
+            this.Warninglabel.Name = "Warninglabel";
+            this.Warninglabel.Size = new System.Drawing.Size(166, 31);
+            this.Warninglabel.TabIndex = 7;
+            this.Warninglabel.Text = "KEEP AWAY!";
+            this.Warninglabel.Visible = false;
+            // 
             // VisionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 336);
+            this.ClientSize = new System.Drawing.Size(329, 349);
+            this.Controls.Add(this.Warninglabel);
             this.Controls.Add(this.CloseButton);
             this.Controls.Add(this.AlarmPicturebox);
             this.Controls.Add(this.StartButton);
@@ -135,5 +149,6 @@
         private PictureBox AlarmPicturebox;
         private Button CloseButton;
         private System.ComponentModel.BackgroundWorker SurveillanceWorker;
+        private Label Warninglabel;
     }
 }

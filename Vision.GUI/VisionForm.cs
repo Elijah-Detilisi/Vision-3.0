@@ -67,10 +67,6 @@ namespace Vision.GUI
             {
                 EnableSecurity();
             }
-            else
-            {
-                DisableSecurity();
-            }
         }
         private void CloseButton_Click(object sender, EventArgs e)
         {
@@ -108,7 +104,8 @@ namespace Vision.GUI
         {
             _securityEnabled = true;
             this.CloseButton.Hide();
-            this.StartButton.BackgroundImage = Properties.Resources.stop;
+            this.Warninglabel.Show();
+            this.StartButton.BackgroundImage = Properties.Resources.keep_away;
 
             _videoFeed.OpenCamera();
             _speechRecognition.StartCommandRecognizer();
@@ -119,6 +116,7 @@ namespace Vision.GUI
         {
             _securityEnabled = false;
             this.CloseButton.Show();
+            this.Warninglabel.Hide();
             this.StartButton.BackgroundImage = Properties.Resources.start_button;
 
             _videoFeed.CloseCamera();
