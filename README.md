@@ -13,3 +13,5 @@ To start using VISION;
 ![alt text](https://github.com/Elijah-Detilisi/Vision-3.0/blob/master/Vision.GUI/Resources/Screenshots/1.PNG?raw=true)
 
 - You then have to click on the "START" button to activate the security feature. 
+ 
+![alt text](https://github.com/Elijah-Detilisi/Vision-3.0/blob/master/Vision.GUI/Resources/Screenshots/2.PNG?raw=true)
