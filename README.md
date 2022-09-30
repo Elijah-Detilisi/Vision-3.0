@@ -7,4 +7,5 @@ When activated, this system detects and reports whenever an unauthorized person 
 Using OpenCV, the system accesses your webcam and opens the live video feed to monitor the surroundings and using advanced Proximity-Detection it calculates the distance between a detected human body and the lense of your webcam and if the calculated distance is less or equal to the defined DISTANCE_DANGER_THRESHOLD, it triggers a loud alarm to stun the intruder and alerts other people that an intruder is trying to touch your computer.
 
 ## System Operations
-To start using VISION, you first have to run the application and will be first greeted by the welcome window.
+To start using VISION; 
+- You first have to run the application and will be first greeted by the welcome window.
