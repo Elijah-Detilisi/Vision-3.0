@@ -9,3 +9,7 @@ Using OpenCV, the system accesses your webcam and opens the live video feed to m
 ## System Operations
 To start using VISION; 
 - You first have to run the application and will be first greeted by the welcome window.
+
+![alt text](https://github.com/Elijah-Detilisi/Vision-3.0/blob/master/Vision.GUI/Resources/Screenshots/1.PNG?raw=true)
+
+- You then have to click on the "START" button to activate the security feature. 
